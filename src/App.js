@@ -25,20 +25,17 @@ function App() {
   ];
 
 
-  return React.createElement('div',{},
-  React.createElement('h2', {}, "Let's get started!"),
+  /* return React.createElement('div',{},
+  React.createElement('h2', {}, "Let's get started Man!"),
   React.createElement(ExpenseAllOne, {items: expenses})
-  );
+  ); */
 
-
-
-
- /*  return (
+  return (
     < div >
       <h2>Let's get started!</h2>
       <ExpenseAllOne items={expenses} />
     </div>
-  ); */
+  );
 
 
 }

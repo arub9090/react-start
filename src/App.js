@@ -1,7 +1,7 @@
 import React from "react";
 import ExpenseAllOne from "./components/Expenses/ExpenseAllOne";
 
-function App() {
+const App=()=>{
   const expenses = [
     {
       id: 'e1',

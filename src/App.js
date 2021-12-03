@@ -30,9 +30,14 @@ const App=()=>{
   React.createElement(ExpenseAllOne, {items: expenses})
   ); */
 
+  const newExpensetoApp=(singleExpense)=>{
+    const allUpdatedExpenses= {...expenses, singleExpense};
+    console.log(allUpdatedExpenses);
+  };
+
   return (
     < div >
-      <NewExpense />
+      <NewExpense onNewExpense={newExpensetoApp}/>
       <ExpenseAllOne items={expenses} />
     </div>
   );

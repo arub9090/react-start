@@ -8,16 +8,31 @@ const ExpenseAllOne=(props)=>{
 
 const [enteredYear, setenteredYear]= useState('2020');
 
-  const getFilterChange=(enteredFilterData)=>{
-    console.log(enteredFilterData); 
-    setenteredYear(enteredFilterData); 
+  const getFilterChange=(selectedYear)=>{
+    setenteredYear(selectedYear); 
+  };
+
+  const filteredExpenses= props.items.filter(expenses=>{
+    return (expenses.date.getFullYear().toString()===enteredYear);
+    
+  })
+
+  let expenseContent= <p>No record Found</p>
+  if(filteredExpenses.length>0){
+    expenseContent = filteredExpenses.map(expenses => (
+      <ExpenseItems
+        key={expenses.id}
+        title={expenses.title}
+        amount={expenses.amount}
+        date={expenses.date}
+      />
+    )) 
   }
 
   return (
     <Card className="expenses">
-    <ExpensesFilter selected={enteredYear} onFilterChange={getFilterChange}/>
-    {props.items.map(expenses=> <ExpenseItems title={expenses.title} amount={expenses.amount} date={expenses.date} />)};
-
+      <ExpensesFilter selected={enteredYear} onFilterChange={getFilterChange} />
+      {expenseContent}
     </Card>
   );
 }

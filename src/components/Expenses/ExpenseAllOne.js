@@ -12,20 +12,14 @@ const [enteredYear, setenteredYear]= useState('2020');
     console.log(enteredFilterData); 
     setenteredYear(enteredFilterData); 
   }
-return (
-  <Card className="expenses">
-    <ExpensesFilter selected={enteredYear} onFilterChange={getFilterChange} />
 
-    {props.items.map((expenses) => (
-      <ExpenseItems
-        title={expenses.title}
-        amount={expenses.amount}
-        date={expenses.date}
-      />
-    ))}
+  return (
+    <Card className="expenses">
+    <ExpensesFilter selected={enteredYear} onFilterChange={getFilterChange}/>
+    {props.items.map(expenses=> <ExpenseItems title={expenses.title} amount={expenses.amount} date={expenses.date} />)};
 
-  </Card>
-);
+    </Card>
+  );
 }
 
 export default ExpenseAllOne;

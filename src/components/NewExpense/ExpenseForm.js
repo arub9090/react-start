@@ -6,24 +6,6 @@ const ExpenseForm=(props)=>{
     const [enteredAmount, setenteredAmount]= useState('');
     const [enteredDate, setenteredDate]= useState('');
 
-/*     const [inputHandeler, setinputHandeler]= useState({
-        enteredTitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    }); */
-
-/* 
-    const titleHandeler= (event)=>{
-        setinputHandeler({...inputHandeler, enteredTitle: event.target.value})
-    }
-
-    const amountHandler= (event)=>{
-        setinputHandeler({...inputHandeler, enteredAmount: event.target.value})
-    }
-    const dateHandler= (event)=>{
-        setinputHandeler({...inputHandeler, enteredDate: event.target.value})
-    }
-     */
     const titleHandeler= (event)=>{
         setenteredTitle(event.target.value)
     };
@@ -31,7 +13,7 @@ const ExpenseForm=(props)=>{
         setenteredAmount(event.target.value);
     };
     const dateHandler = (event) =>{
-        setenteredDate(event.target.value)
+        setenteredDate(event.target.value);
     };
 
     const submitHandeler= (event)=>{
@@ -40,8 +22,9 @@ const ExpenseForm=(props)=>{
         const expenseData= {
             title: enteredTitle,
             amount: enteredAmount,
-            date: new Date(enteredDate)
+            date: new Date(enteredDate.replace(/-/g, '\/').replace(/T.+/, ''))
         };
+
 
         props.onSaveForm(expenseData);
         setenteredTitle('');
@@ -58,12 +41,12 @@ const ExpenseForm=(props)=>{
 
         <div className='new-expense__control'>
             <label>Amount</label>
-            <input type="number" min="0.01" step="0.5" value={enteredAmount} onChange={amountHandler}/>
+            <input type="number" min= {0.5} value={enteredAmount} onChange={amountHandler}/>
         </div>
 
         <div className='new-expense__control'>
             <label>Date</label>
-    <input type="date" min="2019-01-01" max="2022-01-01" value= {enteredDate} onChange={dateHandler} />
+    <input type="date" min='2020-12-12' max= '2024-12-12' value= {enteredDate} onChange={dateHandler} />
         </div>
 
         </div>
